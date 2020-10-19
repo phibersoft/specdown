@@ -9,7 +9,7 @@ interface Props {
 const IndexPage = (props: Props) => (
   <Layout
     title="Rick And Morty ❤"
-    active="/"
+    active="/episodes"
     description="Rick and morty characters.."
     tags={["Rick", "And", "Morty", "Characters"]}
   >
