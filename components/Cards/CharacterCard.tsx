@@ -11,6 +11,7 @@ import { red } from "@material-ui/core/colors";
 
 import Visibility from "@material-ui/icons/Visibility";
 import { Character } from "../../interfaces";
+import { useRouter } from "next/dist/client/router";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,13 +32,22 @@ interface Props {
 }
 export default function CharacterCard(props: Props) {
   const classes = useStyles();
+  const router = useRouter();
   const chr = props.character;
 
   return (
     <Card className={classes.root}>
       <CardHeader
         action={
-          <IconButton aria-label="settings">
+          <IconButton
+            aria-label="settings"
+            onClick={(e) => {
+              router.push(
+                `/character/${chr.id}?details=${JSON.stringify(chr)}`,
+                `/character/${chr.id}`
+              );
+            }}
+          >
             <Visibility />
           </IconButton>
         }

@@ -3,7 +3,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Character } from "../../interfaces";
 import CharacterCard from "../Cards/CharacterCard";
-
+const uniqid = require("uniqid");
 interface Props {
   next?: string | any;
   prev?: string | any;
@@ -14,7 +14,13 @@ export default function CharacterList(props: Props) {
     <Grid container spacing={4}>
       {props.list?.map((char) => {
         return (
-          <Grid key={"chr" + char.id} item xs={12} sm={6} md={4}>
+          <Grid
+            key={"chr" + char.id + "-" + uniqid()}
+            item
+            xs={12}
+            sm={6}
+            md={4}
+          >
             <CharacterCard character={char} />
           </Grid>
         );

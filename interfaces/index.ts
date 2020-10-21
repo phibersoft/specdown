@@ -27,3 +27,21 @@ interface Request {
 export interface RequestCharacters extends Request {
   results: Character[];
 }
+export interface Location {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents?: string[] | null;
+  url: string;
+  created: string;
+}
+export interface Episode {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters?: string[] | null;
+  url: string;
+  created: string;
+}
