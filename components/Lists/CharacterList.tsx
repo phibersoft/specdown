@@ -9,20 +9,51 @@ interface Props {
   prev?: string | any;
   list: Character[];
 }
+
 export default function CharacterList(props: Props) {
   return (
     <Grid container spacing={4}>
-      {props.list?.map((char) => {
+      {props.list?.map((char, i) => {
+        var external =
+          i % 3 === 0 ? (
+            <div style={{ width: "100%", height: "100%" }}>
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+              ></script>
+              <ins
+                className="adsbygoogle"
+                data-ad-client="ca-pub-8606077784509065"
+                data-ad-slot="6582717858"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+                style={{ minWidth: "400px", minHeight: "400px" }}
+              ></ins>{" "}
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `(adsbygoogle = window.adsbygoogle || []).push({})`,
+                }}
+              ></script>{" "}
+            </div>
+          ) : null;
+
         return (
-          <Grid
-            key={"chr" + char.id + "-" + uniqid()}
-            item
-            xs={12}
-            sm={6}
-            md={4}
-          >
-            <CharacterCard character={char} />
-          </Grid>
+          <React.Fragment>
+            {external !== null ? (
+              <Grid key={"ad" + char.id} item xs={12} sm={6} md={4}>
+                {external}
+              </Grid>
+            ) : null}
+            <Grid
+              key={"chr" + char.id + "-" + uniqid()}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+            >
+              <CharacterCard character={char} />
+            </Grid>
+          </React.Fragment>
         );
       })}
     </Grid>
