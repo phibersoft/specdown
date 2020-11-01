@@ -6,19 +6,7 @@ import Layout from "../../components/Layout";
 import { Character } from "../../interfaces";
 
 export default function CharacterPage(props) {
-  const router = useRouter();
-  var { id } = router.query;
-  const [chr, setChr] = useState<Character>({});
-  useEffect(() => {
-    if (router.query.details) {
-      setChr(JSON.parse(router.query.details as string));
-    } else {
-      Axios.get(`${process.env.endpoint}/character/${id}`).then((res) => {
-        setChr(res.data);
-      });
-    }
-  }, []);
-
+  const { character: chr } = props;
   return (
     <Layout
       title={chr.name}
@@ -28,4 +16,24 @@ export default function CharacterPage(props) {
       <CharacterCard character={chr} />
     </Layout>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  const { query } = ctx;
+  if (query.details) {
+    return {
+      props: {
+        character: JSON.parse(query.details),
+      },
+    };
+  }
+  var axiosResults = await Axios.get(
+    process.env.endpoint + "/character/" + query.id
+  );
+  console.log(axiosResults.data);
+  return {
+    props: {
+      character: axiosResults.data,
+    },
+  };
 }

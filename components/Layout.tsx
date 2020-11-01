@@ -12,7 +12,7 @@ type Props = {
 
 const Layout = ({
   children,
-  title = "This is the default title",
+  title = "Rick And Morty",
   description,
   tags,
   active,

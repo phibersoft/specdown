@@ -20,7 +20,7 @@ const IndexPage = (props: Props) => (
     />
   </Layout>
 );
-export async function getStaticProps() {
+export async function getServerSideProps() {
   var first_results = await Axios.get(process.env.endpoint + "/character");
   var data = first_results.data.results;
   var i = 0;

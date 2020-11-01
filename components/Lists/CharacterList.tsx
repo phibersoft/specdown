@@ -15,7 +15,7 @@ export default function CharacterList(props: Props) {
     <Grid container spacing={4}>
       {props.list?.map((char, i) => {
         var external =
-          i % 3 === 0 ? (
+          i % 3 === 1920 ? (
             <div style={{ width: "100%", height: "100%" }}>
               <script
                 async
