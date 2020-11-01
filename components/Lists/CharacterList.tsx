@@ -27,11 +27,16 @@ export default function CharacterList(props: Props) {
                 data-ad-slot="6582717858"
                 data-ad-format="auto"
                 data-full-width-responsive="true"
-                style={{ minWidth: "400px", minHeight: "400px" }}
+                style={{
+                  minWidth: "400px",
+                  minHeight: "400px",
+                  display: "inline-block",
+                  width: "100%",
+                }}
               ></ins>{" "}
               <script
                 dangerouslySetInnerHTML={{
-                  __html: `(adsbygoogle = window.adsbygoogle || []).push({})`,
+                  __html: `setTimeout(() => (adsbygoogle = window.adsbygoogle || []).push({}),2000)`,
                 }}
               ></script>{" "}
             </div>
